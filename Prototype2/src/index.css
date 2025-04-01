@@ -7,6 +7,23 @@
   font-family: "Nunito Sans", serif;
 }
 body{
-  background: url("./assets/bg.jpg") no-repeat center center fixed;
+  /* Using the git-github.png image as background */
+  background: url("../git-github.png") no-repeat center center fixed;
   background-size: cover;
+  color: white;
+  min-height: 100vh;
+  
+  /* Adding a slight overlay to improve readability */
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: -1;
 }

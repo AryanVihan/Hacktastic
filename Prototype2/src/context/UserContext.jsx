@@ -17,7 +17,7 @@ function UserContext({children}) {
     }
     async function aiResponse(prompt){
         let text=await run(prompt)
-        let newText=text.split("**")&&text.split("*")&&text.replace("google", "Aryan The Goat")&&text.replace("Google", "Aryan The Goat")
+        let newText=text.split("**")&&text.split("*")&&text.replace("google", "Google")&&text.replace("Google", "Google")
         setPrompt(newText)
         speak(newText)
         setResponse(true)
@@ -72,7 +72,26 @@ function UserContext({children}) {
             setTimeout(()=>{
                 setSpeaking(false)
             },5000)
-        } else if(command.includes("time")){
+        } 
+        else if(command.includes("open")&& command.includes("github")){
+            window.open("https://github.com/vajeedashaik","_blank")
+            speak("opening GitHub")
+            setResponse(true)
+            setPrompt("opening GitHub...")
+            setTimeout(()=>{
+                setSpeaking(false)
+            },5000)
+        }
+        else if(command.includes("open")&& command.includes("repository")){
+            window.open("https://github.com/vajeedashaik?tab=repositories","_blank")
+            speak("opening your repositories")
+            setResponse(true)
+            setPrompt("opening your repositories...")
+            setTimeout(()=>{
+                setSpeaking(false)
+            },5000)
+        }
+        else if(command.includes("time")){
             let time=new Date().toLocaleString(undefined,{hour:"numeric",minute:"numeric"})
             speak(time)
             setResponse(true)
@@ -102,7 +121,9 @@ function UserContext({children}) {
         prompt,
         setPrompt,
         response,
-        setResponse
+        setResponse,
+        takeCommand,
+        speak
     }
     return (
         <div>
